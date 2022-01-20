@@ -1,0 +1,1 @@
+const {Product, Review} = require('../models');

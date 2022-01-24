@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Product.hasMany(models.Review, {
-        foreignKey: 'product_id',
+        foreignKey:'product_id',
         as: 'reviews'
       })
     }
@@ -22,12 +22,12 @@ module.exports = (sequelize, DataTypes) => {
     category: DataTypes.STRING,
     description: DataTypes.STRING,
     rating:{
-      type: DataTypes.VIRTUAL,
+      type:DataTypes.VIRTUAL,
       get(){
-        const reviewCount = this.reviews.length;
-        if (!reviewCount){
+        if (!this.reviews){
           return 0;
         }
+        const reviewCount = this.reviews.length;
         let total = 0;
         for (let i=0; i<reviewCount; i++){
           total+= this.reviews[i].rating;
@@ -38,8 +38,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Product',
-    timestamps: false,
-    tableName: 'products'
+    timestamps:false,
+    tableName:'products'
   });
   return Product;
 };

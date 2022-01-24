@@ -14,7 +14,7 @@ mixin productForm(product, categories, saveUrl, cancelUrl)
 
             div.form-input
                 label(for="description") Description
-                textarea(id="description" name="description" rows=10 cols=80) #{product_description}
+                textarea(id="description" name="description" rows=10 cols=80) #{product.description}
 
             div.form-buttons
                 a.button(href=cancelUrl) Cancel

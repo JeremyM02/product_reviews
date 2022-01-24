@@ -1,6 +1,6 @@
 const {Product, Review} = require('../models');
 
-module.exports.renderAddReviewForm = async function(req,res) {
+module.exports.renderAddReviewForm = async function (req, res) {
     const product = await Product.findByPk(
         req.params.productId
     );
@@ -13,8 +13,8 @@ module.exports.renderAddReviewForm = async function(req,res) {
     res.render('reviews/add', {product, review});
 };
 
-module.exports.addReview = async function(req,res) {
-    await Review.create( {
+module.exports.addReview = async function (req, res) {
+    await Review.create({
         customer_name: req.body.customer_name,
         subject: req.body.subject,
         rating: req.body.rating,
@@ -24,18 +24,18 @@ module.exports.addReview = async function(req,res) {
     res.redirect(`/products/profile/${req.params.productId}`)
 };
 
-module.exports.renderEditReviewForm = async function (req, res){
+module.exports.renderEditReviewForm = async function (req, res) {
     const review = await Review.findByPk(
         req.params.id
     );
     res.render('reviews/edit', {review});
 };
 
-module.exports.updateReview = async function (req, res) {
+module.exports.updateReview = async function(req, res) {
     const review = await Review.findByPk(
         req.params.id
     );
-        await Review.update( {
+    await Review.update({
             customer_name: req.body.customer_name,
             subject: req.body.subject,
             rating: req.body.rating,
@@ -49,9 +49,9 @@ module.exports.updateReview = async function (req, res) {
     res.redirect(`/products/profile/${review.product_id}`);
 };
 
-module.exports.deleteReview = async function (req, res) {
+module.exports.deleteReview = async function(req, res){
     const review = await Review.findByPk(req.params.id);
-    await Review.destroy( {
+    await Review.destroy({
         where: {
             id: req.params.id
         }

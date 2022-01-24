@@ -10,7 +10,6 @@ module.exports.renderProfile = async function (req, res) {
     res.render('products/profile', {product});
 };
 
-
 module.exports.renderEditForm = async function (req, res) {
     const product = await Product.findByPk(
         req.params.id

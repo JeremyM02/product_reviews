@@ -1,8 +1,10 @@
 extends layout
 
 block content
-  div.products-container
-    a(href='/products/add') Add Product
+  div.content
+    div.products-header-container
+      h1.products-header Welcome to THE Store
+      a.button.primary(href='/products/add') Add Product
     table
       thead
         th Product Name
